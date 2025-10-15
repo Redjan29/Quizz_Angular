@@ -1,6 +1,5 @@
 # Angular Quiz (version simplifiée)
 
-Ceci est une version simplifiée du projet **Angular Quiz**. J'ai réduit le dataset côté backend pour le rendre plus lisible et j'ai allégé quelques textes dans les templates UI pour un rendu plus naturel en français.
 
 ## Prérequis
 - Node.js (v18+ recommandé). Angular 19 fonctionne généralement avec Node 18/20.

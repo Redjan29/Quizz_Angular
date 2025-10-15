@@ -1,4 +1,4 @@
-# Angular Quiz (version simplifiée)
+# Angular Quiz 
 
 
 ## Prérequis

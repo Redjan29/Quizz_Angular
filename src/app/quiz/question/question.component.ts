@@ -13,7 +13,6 @@ export class QuestionComponent implements OnInit {
   constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {
-    this.quizService.getQuizContent();
   }
 
   addAnswer(answer: string, questionId: number) {

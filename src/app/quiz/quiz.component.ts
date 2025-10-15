@@ -22,6 +22,10 @@ export class QuizComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.quizService.playerName = params['playerName'];
       this.playerName = params['playerName'];
+      const categoryId = params['categoryId'];
+      if (categoryId) {
+        this.quizService.getQuizContentByCategory(+categoryId);
+      }
     });
   }
 

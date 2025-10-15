@@ -39,15 +39,19 @@ export class QuizService {
   }
 
   getQuizContent() {
-    this.http.get('http://localhost:3000/questions').subscribe((questions: any) => {
-      for (const question of questions) {
-        this.http.get(`http://localhost:3000/answers?questionId=${question.id}`).subscribe((answers: any) => {
-          this.quizContent.push({
-              id: question.id,
-              question: question.questionLabel,
-              answers
-          });
-        });
+    // legacy: not used. Keep for backward compatibility.
+    return;
+  }
+
+  getQuizContentByCategory(categoryId: number) {
+    this.quizContent = [];
+    this.http.get(`http://localhost:3000/categories/${categoryId}`).subscribe((category: any) => {
+      if (category && category.questions) {
+        for (const q of category.questions) {
+          // transform question to expected structure
+          const answers = q.options.map((opt: string) => ({ answerLabel: opt, isCorrect: opt === q.correct }));
+          this.quizContent.push({ id: q.id, question: q.text, answers });
+        }
       }
     });
   }

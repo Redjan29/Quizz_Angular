@@ -1,3 +1,70 @@
+# Angular Quiz (version simplifiée)
+
+Ceci est une version simplifiée du projet **Angular Quiz**. J'ai réduit le dataset côté backend pour le rendre plus lisible et j'ai allégé quelques textes dans les templates UI pour un rendu plus naturel en français.
+
+## Prérequis
+- Node.js (v18+ recommandé). Angular 19 fonctionne généralement avec Node 18/20.
+- npm
+- (optionnel) json-server (mais on peut utiliser `npx json-server` sans installation globale)
+
+## Installer les dépendances
+Ouvrir un terminal à la racine du projet `r:\angular-quiz` et lancer :
+
+```powershell
+npm install
+```
+
+## Lancer le backend mock (json-server)
+Option 1 (sans installation globale) :
+
+```powershell
+npx json-server --watch backend/db.json --port 3000
+```
+
+Option 2 (installer globalement) :
+
+```powershell
+npm install -g json-server
+json-server --watch backend/db.json --port 3000
+```
+
+L'API sera alors disponible sur http://localhost:3000/categories
+
+## Lancer le frontend (Angular)
+Dans un autre terminal, lancer :
+
+```powershell
+npm start
+# ou directement
+npx ng serve --open
+```
+
+L'application sera servie par défaut sur http://localhost:4200
+
+## Lancer tout en une commande (PowerShell)
+Un petit helper PowerShell est fourni dans `scripts/start-dev.ps1` : il ouvre deux fenêtres PowerShell (une pour json-server et une pour `ng serve`). Pour l'utiliser :
+
+```powershell
+.\scripts\start-dev.ps1
+```
+
+> Note : le script ouvre deux nouvelles fenêtres PowerShell et laisse les processus actifs.
+
+## Restauration des fichiers
+Si tu veux revenir aux templates d'origine, je peux restaurer les fichiers modifiés (`header`, `home`, `quiz`, `question`, `answer`, `result`, `footer`) via git si le projet est sous contrôle de version.
+
+## Problèmes courants
+- Si `npm start` indique qu'il manque `ng`, utilise `npx ng serve`.
+- Si un port est occupé, change le port avec `--port` pour `ng serve` ou `json-server`.
+- Si des warnings `EBADENGINE` s'affichent (packages demandant Node >= 20), ils sont généralement non bloquants ; si le build échoue, envisager une mise à jour de Node.
+
+---
+
+Si tu veux, je peux aussi :
+- Restaurer les textes originaux.
+- Réduire encore le nombre de composants (fusionner header/footer dans app.component, etc.).
+
+Dis-moi ce que tu préfères ensuite.
 # AngularQuiz
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.2.17.

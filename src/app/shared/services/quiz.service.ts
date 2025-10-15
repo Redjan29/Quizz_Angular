@@ -39,12 +39,13 @@ export class QuizService {
   }
 
   getQuizContent() {
-    // legacy: not used. Keep for backward compatibility.
+    
     return;
   }
 
   getQuizContentByCategory(categoryId: number) {
-    this.quizContent = [];
+    
+    this.quizContent.length = 0;
     this.http.get(`http://localhost:3000/categories/${categoryId}`).subscribe((category: any) => {
       if (category && category.questions) {
         for (const q of category.questions) {

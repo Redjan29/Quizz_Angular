@@ -1,3 +1,6 @@
+<div *ngIf="quizContent?.length === 0">
+  <p>Aucune question disponible pour cette catégorie.</p>
+</div>
 <section class="question_container" *ngFor="let content of quizContent; let i = index">
   <h4 class="question_label"><b>Question {{ i + 1 }} :</b> {{ content?.question }}</h4>
   <app-answer

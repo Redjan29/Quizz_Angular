@@ -1,14 +1,20 @@
+<h1>catégories</h1>
+
 <section class="categories">
-	<h2>Choisis une catégorie</h2>
+	<h2>Choisis une catégorie pour voir le quizz</h2>
+
+	<div class="categories-header">
+		<input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" />
+	</div>
 
 	<div *ngIf="loading">Chargement des catégories...</div>
 	<div *ngIf="error" class="error">
 		<p>{{ error }}</p>
 		<button (click)="loadCategories()">Réessayer</button>
 	</div>
-	<ul>
-		<li *ngFor="let cat of categories">
-			<button (click)="selectCategory(cat)">{{ cat.name }}</button>
+	<ul class="categories-list">
+		<li *ngFor="let cat of filteredCategories">
+			<button class="cat-btn" (click)="selectCategory(cat)">{{ cat.name }}</button>
 		</li>
 	</ul>
 </section>

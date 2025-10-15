@@ -18,6 +18,7 @@ export class CategoriesComponent implements OnInit{
   playerName = '';
   loading = false;
   error = '';
+  searchTerm: string = '';
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {}
 
@@ -46,5 +47,11 @@ export class CategoriesComponent implements OnInit{
         this.loading = false;
       }
     });
+  }
+
+  get filteredCategories(): Category[] {
+    const term = this.searchTerm?.trim().toLowerCase();
+    if (!term) return this.categories;
+    return this.categories.filter(c => c.name.toLowerCase().includes(term));
   }
 }
